@@ -1,0 +1,13 @@
+{
+  "name": "mecab.git",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/make-story/mecab.git",
+  "author": "sung-min <ysm0203@cj.net>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.8",
+    "shell-quote": "^1.7.2"
+  }
+}
