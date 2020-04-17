@@ -13,6 +13,8 @@ const mecab = require('../mecab.js'); // https://bitbucket.org/eunjeon/mecab-ko/
 // Koa
 const app = new Koa();
 const router = new Router();
+
+// middleware
 app.use(router.routes());
 app.use(router.allowedMethods());
 

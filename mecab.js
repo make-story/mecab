@@ -81,6 +81,7 @@ const parseEcho = (text='', method=TYPE_POS) => {
 	let result = execSync(command, { encoding: 'UTF-8' });
 	// echo 명령으로 출력된 결과물 확인 
 	// \n : 줄 바꿈 (Enter), \t : 탭 (Tab)
+	//console.log('command$ ', command);
 	return result.split('\n').reduce((accumulator, currentValue/*line 단위 데이터*/, currentIndex, original) => {
 		let arr = currentValue.split('\t'); // [ '아버지', 'NNG,*,F,아버지,*,*,*,*' ]
 
@@ -103,9 +104,9 @@ const parseEcho = (text='', method=TYPE_POS) => {
 		return accumulator;
 	}, []);
 };
-//console.log('test TYPE_POS', parseEcho('아버지가방에들어가신다', TYPE_POS));
-//console.log('test TYPE_MORPHS', parseEcho('아버지가방에들어가신다', TYPE_MORPHS));
-//console.log('test TYPE_NOUNS', parseEcho('아버지가방에들어가신다', TYPE_NOUNS));
+console.log('test TYPE_POS', parseEcho('아버지가방에들어가신다1', TYPE_POS));
+console.log('test TYPE_MORPHS', parseEcho('아버지가방에들어가신다2', TYPE_MORPHS));
+console.log('test TYPE_NOUNS', parseEcho('아버지가방에들어가신다3', TYPE_NOUNS));
 
 module.exports = {
 	parse: parseEcho,
