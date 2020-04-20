@@ -4,7 +4,19 @@ https://bitbucket.org/eunjeon/mecab-ko-dic/src/master/
 
 -
 MAC 설치시
-brew 설치하고, brew install gcc
+brew 설치하고, GCC 설치 
+$ brew install gcc
+
+-
+GCC
+GNU Compiler Collection, 컴파일러
+
+make
+파일 간의 종속관계를 파악하여 Makefile( 기술파일 )에 적힌 대로 컴파일러에 명령하여 SHELL 명령이 순차적으로 실행될 수 있게 합니다.
+
+-
+일부 Mac 오래된 OS 버전에서 GCC 설치가 오래걸릴 수 있다.
+https://stackoverflow.com/questions/24966404/brew-install-gcc-too-time-consuming
 
 -
 mecab-ko 설치
