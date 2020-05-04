@@ -1,0 +1,10 @@
+config
+controllers
+mecab-0.996-ko-0.9.2
+mecab-ko-dic-2.1.1-20180720
+node_modules
+routes
+servers
+*.json
+*.js
+*.lock

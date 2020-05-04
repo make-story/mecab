@@ -42,6 +42,16 @@ $ sudo make install
 /usr/bin/install -c -m 644 model.bin matrix.bin char.bin sys.dic unk.dic left-id.def right-id.def rewrite.def pos-id.def dicrc ‘/usr/local/lib/mecab/dic/mecab-ko-dic’ 메시지 출력시 설치완료
 
 -
+mecab-ko-dic 설치 중 에러
+configure.ac:2: error: possibly undefined macro: AM_INIT_AUTOMAKE
+$ cd mecab-ko-dic-2.1.1-20180720
+$ ./autogen.sh
+$ configure
+$ make
+$ su
+$ make install
+
+-
 실행
 $ mecab -d /usr/local/lib/mecab/dic/mecab-ko-dic
 */
