@@ -2,15 +2,19 @@
 # '.dockerignore' 파일에 Docker 이미지 생성 시 이미지안에 들어가지 않을 파일을 지정
 
 # base image
-FROM hephaex/ubuntu
+#FROM hephaex/ubuntu
+FROM node:10.20.1-slim
 
 # mecab
 # 의존성 설치 (apk, apt-get, yum 등 OS에 맞는 패키지 관리자 활용하여 설치)
-RUN apt-get update \
-#	&& apt-get upgrade -y \
-	&& apt-get install -y automake perl build-essential \
-	&& apt-get install -y autotools-dev autoconf \
-	&& apt-get install -y python3 python3-pip curl sudo cron
+# apk 알파인 리눅스(Alpine Linux) 자체 패키지 관리자 사용
+#RUN apk add --no-cache --virtual \
+#	native-deps g++ gcc libgcc libstdc++ linux-headers \
+#	autoconf automake make nasm curl sudo perl 
+# apt-get 패키지 관리자 사용
+RUN apt-get update 
+#RUN sudo apt-get upgrade -y 
+RUN apt-get install -y automake perl build-essential autotools-dev autoconf curl sudo vim procps 
 #RUN apt-get install -y openjdk-8-jdk git 
 
 # 언어팩 설정을 하기 위해 가장 많이 지원되는 en_US.UTF-8 을 시스템 언어로 지정
@@ -27,7 +31,6 @@ COPY . /app/
 RUN tar xvfz mecab-0.996-ko-0.9.2.tar.gz
 WORKDIR /app/mecab-0.996-ko-0.9.2
 RUN ./configure && make && make check && make install
-
 WORKDIR /app
 
 # mecab-ko-dic
@@ -36,13 +39,15 @@ WORKDIR /app/mecab-ko-dic-2.1.1-20180720
 # automake 버전 문제로 설치 도중 에러가 나는 경우
 RUN autoreconf -vi
 RUN ./autogen.sh
-# libmecab.so.2를 찾을 수 없는 에러가 나는 경우
+# libmecab.so.2를 찾을 수 없는 에러가 나는 경우 - apt-get 패키지로 의존성 설치할 경우 필요
 RUN sudo ldconfig 
 RUN ./configure && make && sudo make install
-
 WORKDIR /app
 
+# 앱 실행
 CMD ["mecab" "안녕하세요."]
+
+# ---------- ---------- ---------- ---------- ---------- ---------- ---------- 
 
 # $ docker build -t makestory/mecab:latest .
 # $ docker run --name mecab makestory/mecab:latest

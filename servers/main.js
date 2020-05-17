@@ -8,6 +8,9 @@ const Router = require('koa-router');
 //const bodyParser = require("body-parser"); // Body parser for fetch posted data
 //const websocket = require('websocket'); // websocket (http://ahoj.io/nodejs-and-websocket-simple-chat-tutorial, https://www.npmjs.com/package/websocket)
 //const mecab = require('mecab-ya'); // 형태소분석 - https://github.com/golbin/node-mecab-ya, https://bitbucket.org/eunjeon/mecab-ko/
+
+const env = require('../config/env');
+const paths = require('../config/paths');
 const mecab = require('../mecab.js'); // https://bitbucket.org/eunjeon/mecab-ko/
 
 // Koa
@@ -31,4 +34,4 @@ let text = '아버지가방에들어가신다';
 console.log(mecab.parse(text));
 
 // 서버 실행
-app.listen(5000);
+app.listen(env.port);
