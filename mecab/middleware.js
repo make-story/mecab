@@ -1,6 +1,8 @@
 /*
 MeCab 을 사용한 자체 모듈 
 https://bitbucket.org/eunjeon/mecab-ko-dic/src/master/
+https://konlpy-ko.readthedocs.io/ko/v0.4.3/morph/
+https://intothedata.com/02.scholar_category/natural_language_processing/korean_pos_tagger/
 
 -
 MAC 설치시
@@ -112,13 +114,13 @@ const parseEcho = (method=TYPE_POS) => (text='') => {
 			// 반환 타입에 따른 작업 
 			switch(method) {
 				case TYPE_POS:
-					accumulator.push([arr[0]].concat(arr[1].split(',')[0]));
+					accumulator.push([arr[0]].concat(arr[1].split(',')[0])); // NNG,행위,F,테스트,*,*,*,*
 					break;
 				case TYPE_MORPHS:
 					accumulator.push(arr[0]);
 					break;
 				case TYPE_NOUNS:
-					if(['NNG', 'NNP'].includes(arr[1].split(',')[0])) {
+					if(['NNG'/*일반 명사*/, 'NNP'/*고유 명사*/].includes(arr[1].split(',')[0])) {
 						accumulator.push(arr[0]);
 					}
 					break;
