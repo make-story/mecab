@@ -23,9 +23,10 @@ const PORT = (() => {
 	}[ACTIVE];
 })();
 
-const PUBLIC_URL = process.env.PUBLIC_URL || '//127.0.0.1';
-
-const MONGODB_HOST = process.env.MONGODB_HOST || '127.0.0.1'; // 'mongodb://localhost' 로 연결이 안될 때가 있음 - 도커를 사용할 경우 해당 컨테이너명 설정
+// window.location.host: 포트포함, window.location.hostname: 포트제외
+const PUBLIC_URL = process.env.PUBLIC_URL || 'http://127.0.0.1';
+const SOCKET_URL = process.env.SOCKET_URL || 'ws://127.0.0.1:9090';
+const MONGODB_HOST = process.env.MONGODB_HOST || '127.0.0.1:27017'; // 'mongodb://localhost' 로 연결이 안될 때가 있음 - 도커를 사용할 경우 해당 컨테이너명 설정
 const MONGODB_DB = process.env.MONGODB_DB || 'webpagetest';
 
 // argv
@@ -87,6 +88,7 @@ module.exports = {
 	build: BUILD,
 	port: PORT,
 	publicUrl: PUBLIC_URL,
+	socketUrl: SOCKET_URL,
 	mongoHost: MONGODB_HOST,
 	mongoDB: MONGODB_DB,
 	argv: getArgv,
