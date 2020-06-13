@@ -31,11 +31,11 @@ const getServedPath = appPackageJson => {
 
 //console.log(__dirname); // __dirname 현재 실행한 파일의 Path
 //console.log(__filename); // __filename 현재 실행한 파일의 이름과 Path
-//console.log('src', resolveApp('src')); // /Users/ysm0203/Development/node/webpagetest.git/src
+//console.log('src', resolveApp('src')); // /Users/ysm0203/Development/node/build.git/src
 //console.log('servedPath', getServedPath(resolveApp('package.json')));
 
 module.exports = {
-	resolveApp,
+	//resolveApp, // paths.resolveApp('public') 형태로 외부에서 사용자가 수동 경로설정이 가능하도록 할 경우, 추후 해당 root 경로 등 변경이 발생하면 하나하나 해당 코드가 들어있는 파일을 찾아 수정해야 한다. 
 	ensureSlash,
 	//dotenv: resolveApp('.env'),
 	appNodeModules: resolveApp('node_modules'),
