@@ -35,7 +35,7 @@ const getServedPath = appPackageJson => {
 //console.log('servedPath', getServedPath(resolveApp('package.json')));
 
 module.exports = {
-	//resolveApp, // paths.resolveApp('public') 형태로 외부에서 사용자가 수동 경로설정이 가능하도록 할 경우, 추후 해당 root 경로 등 변경이 발생하면 하나하나 해당 코드가 들어있는 파일을 찾아 수정해야 한다. 
+	resolveApp, // node 경로/<파일명> 처럼, 명령을 실행하는 위치를 기준으로, resolveApp('<상대경로>') 파라미터로 보내는 경로를 절대경로로 변경
 	ensureSlash,
 	//dotenv: resolveApp('.env'),
 	appNodeModules: resolveApp('node_modules'),
