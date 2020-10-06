@@ -40,7 +40,6 @@ module.exports = {
 	//dotenv: resolveApp('.env'),
 	appNodeModules: resolveApp('node_modules'),
 	appPackageJson: resolveApp('package.json'),
-	appConfigJson: resolveApp('config/config.json'),
 	appPath: resolveApp('.'),
 	appConfig: resolveApp('config'),
 	appSrc: resolveApp('src'),
