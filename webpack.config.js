@@ -1,17 +1,17 @@
 // 모듈
 const path = require('path'); 
 const webpackMerge = require('webpack-merge'); // 여러 웹팩 설정값 결합 - webpackMerge({설정1}, {설정2}, ...)
-const paths = require(path.resolve(__dirname, './paths'));
-const env = require(path.resolve(__dirname, './env'));
-const manifestWrite = require(path.resolve(__dirname, './manifest-write'));
+const paths = require(path.resolve(__dirname, './config/paths'));
+const env = require(path.resolve(__dirname, './config/env'));
+const manifestWrite = require(path.resolve(__dirname, './config/manifest-write'));
 
 // webpack plugin 
 const ManifestPlugin = require('webpack-manifest-plugin'); // 빌드 결과 json 생성 
 
 // webpack config (웹팩설정 정보)
-const configBase = require('./webpack.base.js'); // 공통설정 (기본 프로젝트)
-const configProduction = require('./webpack.production.js'); // 웹팩 배포용 설정 
-const configDevelopment = require('./webpack.development.js'); // 웹팩 개발모드 설정 
+const configBase = require(path.resolve(__dirname, './config/webpack.base.js')); // 공통설정 (기본 프로젝트)
+const configProduction = require(path.resolve(__dirname, './config/webpack.production.js')); // 웹팩 배포용 설정 
+const configDevelopment = require(path.resolve(__dirname, './config/webpack.development.js')); // 웹팩 개발모드 설정 
 
 // 경로
 const PATHS = {
