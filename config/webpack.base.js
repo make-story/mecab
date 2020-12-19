@@ -155,8 +155,11 @@ module.exports = {
 					//ignorePartials: true,
 					//ignoreHelpers: true,
 					//partialDirs: [],
-					helperDirs: [path.resolve(__dirname, "../src/helper")], // handlebars 기본 제공 헬퍼 외 사용자가 등록한 추가 헬퍼들이 있는 경로 (기본적으로 handlebars-loader 는 .handlebars 템플릿이 있는 경로에서 템플릿에서 사용된 .js 헬퍼 파일을 검색한다.)
-					/*partialResolver: function(partial, callback){
+					helperDirs: [
+						// handlebars 기본 제공 헬퍼 외 사용자가 등록한 추가 헬퍼들이 있는 경로 (기본적으로 handlebars-loader 는 .handlebars 템플릿이 있는 경로에서 템플릿에서 사용된 .js 헬퍼 파일을 검색한다.)
+						path.resolve(__dirname, "../src/helper")
+					], 
+					/*partialResolver: function(partial, callback) {
 						console.log('partialResolver');
 						console.log('partial', partial);
 						console.log('callback', callback);
@@ -190,8 +193,8 @@ module.exports = {
 				//include: path.join(__dirname), // 대상
 				exclude: /node_modules/, // 제외
 				use: {
-					// .babelrc 바벨 기본설정파일 확인필요
-					loader: 'babel-loader',  // npm install --save-dev @babel/core babel-loader @babel/preset-react @babel/preset-env 
+					// .babelrc 있다면 해당 파일을 먼저 참조 하며, 없을 경우 webpack options 에 부여한 presets plugins 을 참조
+					loader: 'babel-loader',  // npm install --save-dev babel-loader @babel/core @babel/preset-env 
 					options: {
 						// presets
 						// @babel/preset-env를 설정하여, babel에서 미리 정의해둔 환경으로 ES6에서 ES5로 변환
