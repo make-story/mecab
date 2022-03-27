@@ -29,7 +29,7 @@ const webSocketMessageBroadcast = message => {
 	}
 };
 const webSocketMessageUnicast = key => message => webSocketConnections[key] && webSocketConnections[key].send(message); // sendUTF, sendBytes, sendFrame, send
-const webSocketUrlRoute = (routePath, request, handler) => {
+const routeHandler = (routePath, request, handler) => {
 	const match = pathMatch(routePath);
 	const { key, resourceURL } = request;
 	const params = match(resourceURL.pathname);
@@ -104,9 +104,9 @@ const webSocketRequest = request/*WebSocketRequest*/ => {
 	webSocketResourceURL[key] = resourceURL; // search : '?url=test', query : { url: 'test' }, pathname : '/', path : '/?url=test', href : '/?url=test' 등 정보 
 
 	// route 
-	webSocketUrlRoute('/uitest/:device/cjmall/:category', request, uitest);
-	webSocketUrlRoute('/performance/:device', request, performance);
-	webSocketUrlRoute('/validator/:device', request, validator);
+	routeHandler('/uitest/:device/cjmall/:category', request, uitest);
+	routeHandler('/performance/:device', request, performance);
+	routeHandler('/validator/:device', request, validator);
 
 	// 공통 connection event
 	connection.on('message', message => {
